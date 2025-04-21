@@ -1,6 +1,6 @@
 import React from 'react';
 
-export default function Header() {
+function Header() {
   return (
     <div id="header">
       <div id="header-logo">
@@ -47,3 +47,5 @@ export default function Header() {
     </div>
   );
 }
+
+export default Header;
