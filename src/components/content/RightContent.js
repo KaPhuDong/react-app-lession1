@@ -1,23 +1,35 @@
-// RightContent.js
 import React, { Component } from 'react';
 import ShowCard from './showCard/ShowCard';
-import { getData } from './data.js';
 
 class RightContent extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      products: [],
+    };
+  }
+
+  componentDidMount() {
+    fetch('https://656ca88ee1e03bfd572e9c16.mockapi.io/products')
+      .then((res) => res.json())
+      .then((data) => this.setState({ products: data }))
+      .catch((error) => console.error('API error:', error));
+  }
+
   render() {
-    const products = getData();
+    const { products } = this.state;
 
     return (
       <div>
         <div id="right-content">
           <h2>Product :</h2>
           <div id="products">
-            {products.map((product, index) => (
+            {products.map((product) => (
               <ShowCard
-                key={index}
+                key={product.id}
                 loai={product.loai}
                 name={product.name}
-                image={product.image}
+                image={product.avatar}
               />
             ))}
             <div style={{ clear: 'both' }} />
