@@ -10,7 +10,7 @@ class RightContent extends Component {
   }
 
   componentDidMount() {
-    fetch('https://656ca88ee1e03bfd572e9c16.mockapi.io/products')
+    fetch('http://127.0.0.1:8000/api/products') /*axious*/
       .then((res) => res.json())
       .then((data) => this.setState({ products: data }))
       .catch((error) => console.error('API error:', error));
@@ -29,7 +29,7 @@ class RightContent extends Component {
                 key={product.id}
                 loai={product.loai}
                 name={product.name}
-                image={product.avatar}
+                image={product.image}
               />
             ))}
             <div style={{ clear: 'both' }} />
